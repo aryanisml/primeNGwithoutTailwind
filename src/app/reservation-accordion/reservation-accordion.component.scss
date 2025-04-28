@@ -170,6 +170,8 @@ $gap-pattern-color: #E9EEF2;
 $text-muted: #717274;
 $accordion-width: 616px;
 
+
+
 // Reservation Section
 .reservation-section {
   width: 100%;
@@ -366,5 +368,34 @@ $accordion-width: 616px;
         left: -80px;
       }
     }
+  }
+}
+
+// In the component's CSS
+:host {
+  display: block;
+  width: 616px !important; // Force exact width
+  min-width: 616px;
+}
+
+// Ensure all nested elements maintain 100% of the container width
+.reservation-accordion-header,
+.accordion-content,
+.content-wrapper,
+.time-slot-container {
+  width: 100%;
+  box-sizing: border-box; // Ensure padding doesn't affect width
+}
+
+// Media query for smaller screens
+@media (max-width: 640px) {
+  app-reservation-accordion {
+    width: 100% !important;
+    min-width: auto;
+  }
+  
+  :host {
+    width: 100% !important;
+    min-width: auto;
   }
 }
