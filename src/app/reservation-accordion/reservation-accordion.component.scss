@@ -1,3 +1,166 @@
+// // Variables
+// $border-color: #D4D7D9;
+// $light-bg-color: #F2F9FF;
+// $content-bg-color: #F4F8FB;
+// $accent-blue: #002084;
+// $gap-pattern-color: #E9EEF2;
+// $text-muted: #717274;
+
+// // Accordion Header
+// .reservation-accordion-header {
+//   display: flex;
+//   align-items: center;
+//   border-top: 1px solid $border-color;
+//   border-bottom: 1px solid $border-color;
+//   padding-top: 12px;
+//   padding-bottom: 12px;
+//   cursor: pointer;
+
+//   .accordion-arrow {
+//     margin-bottom: 2px;
+//     transition: transform 300ms;
+//   }
+
+//   .accordion-title {
+//     display: flex;
+//     width: 100%;
+//     align-items: center;
+//     padding-left: 8px;
+//     gap: 5px;
+
+//     .group-label {
+//       color: $text-muted;
+//     }
+//   }
+// }
+
+// // Accordion Content
+// .accordion-content {
+//   transition: max-height 300ms ease-in-out;
+//   overflow: hidden;
+
+//   .content-wrapper {
+//     width: 100%;
+//   }
+
+//   .time-slot-container {
+//     width: 100%;
+//     display: flex;
+//     flex-direction: column;
+//     border-bottom: 1px solid $border-color;
+//   }
+// }
+
+// // Time Slots
+// .time-slot-divider {
+//   width: 100%;
+//   height: 1px;
+//   background-color: $border-color;
+// }
+
+// .time-slot {
+//   display: flex;
+//   position: relative;
+
+//   .time-column {
+//     width: 130px;
+//     flex-shrink: 0;
+
+//     .time-label {
+//       height: 33px;
+//       background-color: $light-bg-color;
+//       display: flex;
+//       align-items: center;
+//       justify-content: center;
+//     }
+//   }
+
+//   .reservations-column {
+//     flex: 1;
+//     background-color: $content-bg-color;
+//     border-left: 1px solid $border-color;
+//     position: relative;
+//   }
+// }
+
+// // Current Time Indicator
+// .current-time-indicator {
+//   position: absolute;
+//   left: 0;
+//   right: 0;
+//   z-index: 20;
+//   top: 0;
+
+//   .current-time-line {
+//     width: 100%;
+//     height: 2px;
+//     background-color: $accent-blue;
+//     position: relative;
+//     margin-top: 7px;
+
+//     .current-time-arrow {
+//       position: absolute;
+//       width: 0;
+//       height: 0;
+//       border-left: 16px solid $accent-blue;
+//       border-top: 8px solid transparent;
+//       border-bottom: 8px solid transparent;
+//       top: -7px;
+//       left: -0.5px;
+//     }
+//   }
+// }
+
+// // Reservations
+// .reservations-container {
+//   position: relative;
+//   z-index: 10;
+
+//   .reservation-wrapper {
+//     margin-top: 8px;
+//     margin-bottom: 8px;
+//     position: relative;
+//   }
+// }
+
+// // Half-hour Divider
+// .half-hour-divider {
+//   display: flex;
+//   position: relative;
+//   margin-top: -4px;
+//   margin-bottom: -4px;
+
+//   .half-hour-line-left {
+//     width: 130px;
+//     display: inline-block;
+//     position: absolute;
+//     left: -130px;
+//     height: 1px;
+//     border-top: 1px dashed $border-color;
+//     top: 0;
+//     margin: 0;
+//   }
+
+//   .half-hour-line-right {
+//     border-top: 1px dashed $border-color;
+//     margin: 0;
+//     width: 100%;
+//   }
+// }
+
+// // Time Gap
+// .time-gap {
+//   border-top: 1px solid $border-color;
+
+//   .time-gap-pattern {
+//     width: 100%;
+//     height: 20px;
+//     border-bottom: 1px solid $border-color;
+//     background-size: 15px 36px;
+//     background-image: repeating-linear-gradient(-45deg, $gap-pattern-color 18px, $gap-pattern-color 23px, transparent 18px, transparent 28px);
+//   }
+// }
+
 // Variables
 $border-color: #D4D7D9;
 $light-bg-color: #F2F9FF;
@@ -5,6 +168,30 @@ $content-bg-color: #F4F8FB;
 $accent-blue: #002084;
 $gap-pattern-color: #E9EEF2;
 $text-muted: #717274;
+$accordion-width: 616px;
+
+// Reservation Section
+.reservation-section {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  
+  .reservation-container {
+    width: 100%;
+    max-width: $accordion-width;
+    
+    .accordion-wrapper {
+      width: 100%;
+      padding: 8px 0;
+    }
+  }
+}
+
+// Accordion Host
+:host {
+  display: block;
+  width: 100%;
+}
 
 // Accordion Header
 .reservation-accordion-header {
@@ -12,22 +199,22 @@ $text-muted: #717274;
   align-items: center;
   border-top: 1px solid $border-color;
   border-bottom: 1px solid $border-color;
-  padding-top: 12px;
-  padding-bottom: 12px;
+  padding: 12px;
   cursor: pointer;
-
+  width: 100%;
+  
   .accordion-arrow {
     margin-bottom: 2px;
     transition: transform 300ms;
   }
-
+  
   .accordion-title {
     display: flex;
     width: 100%;
     align-items: center;
     padding-left: 8px;
     gap: 5px;
-
+    
     .group-label {
       color: $text-muted;
     }
@@ -38,11 +225,12 @@ $text-muted: #717274;
 .accordion-content {
   transition: max-height 300ms ease-in-out;
   overflow: hidden;
-
+  width: 100%;
+  
   .content-wrapper {
     width: 100%;
   }
-
+  
   .time-slot-container {
     width: 100%;
     display: flex;
@@ -61,11 +249,12 @@ $text-muted: #717274;
 .time-slot {
   display: flex;
   position: relative;
-
+  width: 100%;
+  
   .time-column {
     width: 130px;
     flex-shrink: 0;
-
+    
     .time-label {
       height: 33px;
       background-color: $light-bg-color;
@@ -74,7 +263,7 @@ $text-muted: #717274;
       justify-content: center;
     }
   }
-
+  
   .reservations-column {
     flex: 1;
     background-color: $content-bg-color;
@@ -90,14 +279,14 @@ $text-muted: #717274;
   right: 0;
   z-index: 20;
   top: 0;
-
+  
   .current-time-line {
     width: 100%;
     height: 2px;
     background-color: $accent-blue;
     position: relative;
     margin-top: 7px;
-
+    
     .current-time-arrow {
       position: absolute;
       width: 0;
@@ -115,10 +304,9 @@ $text-muted: #717274;
 .reservations-container {
   position: relative;
   z-index: 10;
-
+  
   .reservation-wrapper {
-    margin-top: 8px;
-    margin-bottom: 8px;
+    margin: 8px;
     position: relative;
   }
 }
@@ -127,9 +315,8 @@ $text-muted: #717274;
 .half-hour-divider {
   display: flex;
   position: relative;
-  margin-top: -4px;
-  margin-bottom: -4px;
-
+  margin: -4px 0;
+  
   .half-hour-line-left {
     width: 130px;
     display: inline-block;
@@ -140,7 +327,7 @@ $text-muted: #717274;
     top: 0;
     margin: 0;
   }
-
+  
   .half-hour-line-right {
     border-top: 1px dashed $border-color;
     margin: 0;
@@ -151,12 +338,33 @@ $text-muted: #717274;
 // Time Gap
 .time-gap {
   border-top: 1px solid $border-color;
-
+  width: 100%;
+  
   .time-gap-pattern {
     width: 100%;
     height: 20px;
     border-bottom: 1px solid $border-color;
     background-size: 15px 36px;
     background-image: repeating-linear-gradient(-45deg, $gap-pattern-color 18px, $gap-pattern-color 23px, transparent 18px, transparent 28px);
+  }
+}
+
+// Media Queries for Responsiveness
+@media (max-width: 640px) {
+  .reservation-container {
+    max-width: 100%;
+  }
+  
+  .time-slot {
+    .time-column {
+      width: 80px;
+    }
+    
+    .half-hour-divider {
+      .half-hour-line-left {
+        width: 80px;
+        left: -80px;
+      }
+    }
   }
 }

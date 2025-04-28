@@ -1,3 +1,7 @@
-<section *ngFor="let reservationAccordion of reservationAccordionList" class="max-w-[616px] py-2">
-  <app-reservation-accordion [reservationAccordion]="reservationAccordion"></app-reservation-accordion>
+<section class="reservation-section">
+  <div class="reservation-container">
+    <div *ngFor="let reservationAccordion of reservationAccordionList" class="accordion-wrapper">
+      <app-reservation-accordion [reservationAccordion]="reservationAccordion"></app-reservation-accordion>
+    </div>
+  </div>
 </section>
