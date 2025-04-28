@@ -168,28 +168,25 @@ $content-bg-color: #F4F8FB;
 $accent-blue: #002084;
 $gap-pattern-color: #E9EEF2;
 $text-muted: #717274;
-$accordion-width: 616px;
+$target-width: 616px;
 
-
-
-// Reservation Section
-.reservation-section {
-  width: 100%;
+// Parent container with flexible responsive width
+section {
   display: flex;
   justify-content: center;
-  
-  .reservation-container {
-    width: 100%;
-    max-width: $accordion-width;
-    
-    .accordion-wrapper {
-      width: 100%;
-      padding: 8px 0;
-    }
-  }
+  width: 100%;
+  padding: 8px 0;
 }
 
-// Accordion Host
+// Accordion wrapper with responsive constraints
+app-reservation-accordion {
+  display: block;
+  width: 100%;
+  max-width: $target-width;
+  box-sizing: border-box;
+}
+
+// Component host
 :host {
   display: block;
   width: 100%;
@@ -204,6 +201,7 @@ $accordion-width: 616px;
   padding: 12px;
   cursor: pointer;
   width: 100%;
+  box-sizing: border-box;
   
   .accordion-arrow {
     margin-bottom: 2px;
@@ -228,6 +226,7 @@ $accordion-width: 616px;
   transition: max-height 300ms ease-in-out;
   overflow: hidden;
   width: 100%;
+  box-sizing: border-box;
   
   .content-wrapper {
     width: 100%;
@@ -241,20 +240,14 @@ $accordion-width: 616px;
   }
 }
 
-// Time Slots
-.time-slot-divider {
-  width: 100%;
-  height: 1px;
-  background-color: $border-color;
-}
-
+// Time Slots with responsive layout
 .time-slot {
   display: flex;
   position: relative;
   width: 100%;
   
   .time-column {
-    width: 130px;
+    width: clamp(80px, 22%, 130px); // Responsive width with min/max constraints
     flex-shrink: 0;
     
     .time-label {
@@ -274,56 +267,17 @@ $accordion-width: 616px;
   }
 }
 
-// Current Time Indicator
-.current-time-indicator {
-  position: absolute;
-  left: 0;
-  right: 0;
-  z-index: 20;
-  top: 0;
-  
-  .current-time-line {
-    width: 100%;
-    height: 2px;
-    background-color: $accent-blue;
-    position: relative;
-    margin-top: 7px;
-    
-    .current-time-arrow {
-      position: absolute;
-      width: 0;
-      height: 0;
-      border-left: 16px solid $accent-blue;
-      border-top: 8px solid transparent;
-      border-bottom: 8px solid transparent;
-      top: -7px;
-      left: -0.5px;
-    }
-  }
-}
-
-// Reservations
-.reservations-container {
-  position: relative;
-  z-index: 10;
-  
-  .reservation-wrapper {
-    margin: 8px;
-    position: relative;
-  }
-}
-
-// Half-hour Divider
+// Half-hour Divider with responsive positioning
 .half-hour-divider {
   display: flex;
   position: relative;
   margin: -4px 0;
   
   .half-hour-line-left {
-    width: 130px;
+    width: clamp(80px, 22%, 130px);
     display: inline-block;
     position: absolute;
-    left: -130px;
+    left: calc(-1 * clamp(80px, 22%, 130px));
     height: 1px;
     border-top: 1px dashed $border-color;
     top: 0;
@@ -337,65 +291,28 @@ $accordion-width: 616px;
   }
 }
 
-// Time Gap
-.time-gap {
-  border-top: 1px solid $border-color;
-  width: 100%;
-  
-  .time-gap-pattern {
-    width: 100%;
-    height: 20px;
-    border-bottom: 1px solid $border-color;
-    background-size: 15px 36px;
-    background-image: repeating-linear-gradient(-45deg, $gap-pattern-color 18px, $gap-pattern-color 23px, transparent 18px, transparent 28px);
+// Media queries for different screen sizes
+@media (max-width: 768px) {
+  // Adjust padding and margins for medium screens
+  .reservation-wrapper {
+    margin: 6px;
   }
 }
 
-// Media Queries for Responsiveness
-@media (max-width: 640px) {
-  .reservation-container {
-    max-width: 100%;
+@media (max-width: 576px) {
+  // Further adjustments for small screens
+  .reservation-wrapper {
+    margin: 4px;
   }
   
-  .time-slot {
-    .time-column {
-      width: 80px;
-    }
-    
-    .half-hour-divider {
-      .half-hour-line-left {
-        width: 80px;
-        left: -80px;
-      }
-    }
+  .accordion-title {
+    font-size: 0.9rem;
   }
 }
 
-// In the component's CSS
-:host {
-  display: block;
-  width: 616px !important; // Force exact width
-  min-width: 616px;
-}
-
-// Ensure all nested elements maintain 100% of the container width
-.reservation-accordion-header,
-.accordion-content,
-.content-wrapper,
-.time-slot-container {
-  width: 100%;
-  box-sizing: border-box; // Ensure padding doesn't affect width
-}
-
-// Media query for smaller screens
-@media (max-width: 640px) {
+// Additional responsive styles for various zoom levels
+@media (min-width: 1200px) {
   app-reservation-accordion {
-    width: 100% !important;
-    min-width: auto;
-  }
-  
-  :host {
-    width: 100% !important;
-    min-width: auto;
+    width: $target-width; // Fix width at exactly target on large screens
   }
 }
