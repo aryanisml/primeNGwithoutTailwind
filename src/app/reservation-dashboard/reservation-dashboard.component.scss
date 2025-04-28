@@ -9,61 +9,82 @@ $white: #FFFFFF;
 .stats-container {
   width: 100%;
   height: 100%;
+  display: flex;
+  flex-direction: column;
 }
 
 // Header
 .stats-header {
   display: flex;
   justify-content: space-between;
-  padding: 24px;
-  height: 79px;
+  padding: 1.5rem;
+  height: 5rem;
   border-bottom: 1px solid $border-color;
-
+  
   .stats-title {
-    font-size: 26px;
+    font-size: 1.625rem;
     font-weight: bold;
   }
 }
 
 // Content
 .stats-content {
-  padding: 24px;
-  display: flex;
-  gap: 24px;
-  flex-wrap: wrap;
+  padding: 1.5rem;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); // 3 columns
+  gap: 1.5rem;
+  width: 100%;
 }
 
 // Cards
 .stats-card {
-  width: 224px;
-  height: 159px;
+  height: 10rem;
   border: 1px solid $card-border-color;
   background-color: $card-bg-color;
-  border-radius: 8px;
-  padding: 12px;
+  border-radius: 0.5rem;
+  padding: 0.75rem;
   display: flex;
   justify-content: space-between;
   flex-direction: column;
-
+  
   .stats-icon {
-    width: 50px;
-    height: 50px;
+    width: 3.125rem;
+    height: 3.125rem;
     border: 1px solid $border-color;
     border-radius: 50%;
     background-color: $white;
   }
-
+  
   .stats-data {
     .stats-number {
-      font-size: 26px;
+      font-size: 1.625rem;
       color: $text-color;
       font-weight: bold;
     }
-
+    
     .stats-label {
-      font-size: 14px;
+      font-size: 0.875rem;
       color: $text-color;
       font-weight: medium;
     }
+  }
+}
+
+// Responsive adjustments
+@media (max-width: 64rem) { // 1024px
+  .stats-content {
+    grid-template-columns: repeat(3, 1fr); // Keep 3 columns on medium screens
+  }
+}
+
+@media (max-width: 48rem) { // 768px
+  .stats-content {
+    grid-template-columns: repeat(2, 1fr); // 2 columns on smaller screens
+  }
+}
+
+@media (max-width: 30rem) { // 480px
+  .stats-content {
+    grid-template-columns: 1fr; // 1 column on mobile
   }
 }
