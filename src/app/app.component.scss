@@ -1,0 +1,49 @@
+// Main container styles
+.app-container {
+    display: flex;
+    width: 100%;
+    height: 838px !important;
+    min-height: 838px !important;
+    // border:1px solid blue;  
+    // Left section
+    .left-section {
+      height: 100%;
+      width: calc(100% - 770px);
+      
+      .header {
+        padding: 0.5rem 1.25rem;
+        display: flex;
+        justify-content: space-between;
+        
+        .placeholder-item {
+          width: 60px;
+          height: 20px;
+          border: 1px solid #D4D7D9;
+        }
+        
+        .header-controls {
+          display: flex;
+          
+          span {
+            width: 60px;
+            height: 20px;
+            border: 1px solid #D4D7D9;
+          }
+        }
+      }
+      
+      app-reservation {
+        display: block;
+      }
+    }
+    
+    // Right section
+    .right-section {
+      width: 770px;
+      height: 100%;
+      
+      app-reservation-dashboard {
+        display: block;
+      }
+    }
+  }

@@ -1,0 +1,17 @@
+<div class="stats-container">
+    <div class="stats-header">
+      <span class="stats-title">Today's Stats</span>
+      <button>close</button>
+    </div>
+    <div class="stats-content">
+      <div *ngFor="let record of records" class="stats-card">
+        <div class="stats-icon"></div>
+        <div class="stats-data">
+          <div *ngFor="let item of record.data">
+            <div class="stats-number">{{ item.number }}</div>
+            <div class="stats-label">{{ item.label }}</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>

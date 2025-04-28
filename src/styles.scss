@@ -1,0 +1,45 @@
+/* You can add global styles to this file, and also import other style files */
+// src/styles.scss
+
+@use './styles/typography.scss';
+@use './styles/typography-utilities.scss';
+
+@import 'primeicons/primeicons.css';
+@import 'primeflex/primeflex.css';
+/* Import typography and utilities */
+// Add any custom global styles below
+/* Ensure Tailwind respects typography.scss heading styles */
+h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-family-primary);
+    font-weight: inherit;
+    line-height: inherit;
+    color: var(--typography1);
+  }
+  .p-datepicker .p-datepicker-day-view,
+  .p-datepicker .p-datepicker-date {
+    font-size: 14px;
+  }
+  
+  .p-datatable .p-datatable-thead > tr > th {
+    border-top: 2px solid #e5e7eb;
+  }
+  .p-accordion .p-accordion-header .p-accordion-header-link {
+    flex-direction: row-reverse;
+    justify-content: space-between;
+  }
+  .p-accordion .p-accordion-header .p-accordion-header-link .p-accordion-toggle-icon {
+    margin-right: 0.5rem;
+    margin-left: 0;
+  }
+
+body {
+    padding: 1rem;
+    font-family: var(--font-family-primary);
+    font-size: 1rem;
+    line-height: 1.5rem;
+    font-weight: 200;
+    color: var(--typography1);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  

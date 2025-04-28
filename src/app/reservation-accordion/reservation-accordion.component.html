@@ -1,0 +1,67 @@
+<div class="reservation-accordion-header" (click)="toggleAccordion()">
+    <img src="assets/icons/arrow.svg" alt="arrow" class="accordion-arrow"
+        [ngStyle]="{ transform: !isOpen ? 'rotate(0deg)' : 'rotate(180deg)' }" />
+    <div class="accordion-title">
+        <span class="group-label">{{ reservationAccordion.groupLabel }}</span>
+        <img src="assets/icons/forward-arrow.svg" alt="forward-arrow" />
+        <span>{{ reservationAccordion.title }} ({{ reservationAccordion.identifier }})</span>
+        <span> | {{ reservationAccordion.reservations.length }} Reservations</span>
+    </div>
+</div>
+<div class="accordion-content"
+    [ngStyle]="{ 'max-height': !isOpen ? '2000px' : '0px' }">
+    <div class="content-wrapper">
+        <div class="time-slot-container">
+            <ng-container *ngFor="let slot of timeSlots; let i = index">
+                <div *ngIf="i > 0 && !(i > 0 && timeSlots[i-1].hasGapAfter)" class="time-slot-divider"></div>
+                <div class="time-slot">
+                    <div class="time-column">
+                        <div class="time-label">
+                            {{ slot.formattedTime }}
+                        </div>
+                    </div>
+                    <div class="reservations-column">
+                        <div *ngIf="slot.hasCurrentTime" class="current-time-indicator">
+                            <div class="current-time-line">
+                                <div class="current-time-arrow"></div>
+                            </div>
+                        </div>
+                        <div class="reservations-container">
+                            <ng-container *ngFor="let reservation of slot.firstHalf">
+                                <div class="reservation-wrapper">
+                                    <app-reservation-card [name]="reservation.name"
+                                        [unitNumber]="reservation.unitNumber" [towNumber]="reservation.towNumber"
+                                        [vehicleType]="reservation.vehicleType" [tripType]="reservation.tripType"
+                                        [customerType]="reservation.customerType" [hasPhone]="reservation.hasPhone"
+                                        [hasFavorite]="reservation.hasFavorite" [hasWarning]="reservation.hasWarning"
+                                        [accentColor]="reservation.accentColor" [assigned]="reservation.assigned">
+                                    </app-reservation-card>
+                                </div>
+                            </ng-container>
+
+                            <div *ngIf="slot.firstHalf.length && slot.secondHalf.length" class="half-hour-divider">
+                                <span class="half-hour-line-left"></span>
+                                <div class="half-hour-line-right"></div>
+                            </div>
+
+                            <ng-container *ngFor="let reservation of slot.secondHalf">
+                                <div class="reservation-wrapper">
+                                    <app-reservation-card [name]="reservation.name"
+                                        [unitNumber]="reservation.unitNumber" [towNumber]="reservation.towNumber"
+                                        [vehicleType]="reservation.vehicleType" [tripType]="reservation.tripType"
+                                        [customerType]="reservation.customerType" [hasPhone]="reservation.hasPhone"
+                                        [hasFavorite]="reservation.hasFavorite" [hasWarning]="reservation.hasWarning"
+                                        [accentColor]="reservation.accentColor" [assigned]="reservation.assigned">
+                                    </app-reservation-card>
+                                </div>
+                            </ng-container>
+                        </div>
+                    </div>
+                </div>
+                <div *ngIf="slot.hasGapAfter" class="time-gap">
+                    <div class="time-gap-pattern"></div>
+                </div>
+            </ng-container>
+        </div>
+    </div>
+</div>

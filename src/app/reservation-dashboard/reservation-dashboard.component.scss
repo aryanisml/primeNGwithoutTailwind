@@ -1,0 +1,69 @@
+// Variables
+$border-color: #D4D7D9;
+$card-border-color: #E8ECEF;
+$card-bg-color: #F4F8FB;
+$text-color: #171718;
+$white: #FFFFFF;
+
+// Container
+.stats-container {
+  width: 100%;
+  height: 100%;
+}
+
+// Header
+.stats-header {
+  display: flex;
+  justify-content: space-between;
+  padding: 24px;
+  height: 79px;
+  border-bottom: 1px solid $border-color;
+
+  .stats-title {
+    font-size: 26px;
+    font-weight: bold;
+  }
+}
+
+// Content
+.stats-content {
+  padding: 24px;
+  display: flex;
+  gap: 24px;
+  flex-wrap: wrap;
+}
+
+// Cards
+.stats-card {
+  width: 224px;
+  height: 159px;
+  border: 1px solid $card-border-color;
+  background-color: $card-bg-color;
+  border-radius: 8px;
+  padding: 12px;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+
+  .stats-icon {
+    width: 50px;
+    height: 50px;
+    border: 1px solid $border-color;
+    border-radius: 50%;
+    background-color: $white;
+  }
+
+  .stats-data {
+    .stats-number {
+      font-size: 26px;
+      color: $text-color;
+      font-weight: bold;
+    }
+
+    .stats-label {
+      font-size: 14px;
+      color: $text-color;
+      font-weight: medium;
+    }
+  }
+}
