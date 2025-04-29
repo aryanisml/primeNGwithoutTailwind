@@ -1,17 +1,21 @@
 // Variables (assuming 16px base font size)
 $app-height: 52.375rem; // 838px / 16px = 52.375rem
-$right-width:770px;
+$right-width: 48.125rem; // 770px converted to rem
 $border-color: #D4D7D9;
+$gap-size: 1rem; // Gap between sections
 
 // Main container styles
 .app-container {
+
   display: flex;
   width: 100%;
   height: $app-height;
+  gap: $gap-size; // This sets the space between flex items
   
   // Left section
   .left-section {
-    
+    background-color: #ffff;
+    flex: 1; // Take remaining space
     height: $app-height;
     display: flex;
     flex-direction: column;
@@ -21,7 +25,7 @@ $border-color: #D4D7D9;
       padding: 0.5rem 1.25rem;
       display: flex;
       justify-content: space-between;
-      z-index: 2; // Keep header above content when scrolling
+      z-index: 2; 
     }
     
     app-reservation {
@@ -30,16 +34,17 @@ $border-color: #D4D7D9;
       max-width: 38.5rem;
       padding-left: 1.25rem;
       flex: 1;
-      overflow-y: auto; // Individual scroll for left content
+      overflow-y: auto;
     }
   }
   
   // Right section
   .right-section {
+    background-color: #ffff;
     width: $right-width;
-    flex-shrink: 0;
-    height: $app-height; // Same height as left section
-    border-left: 1px solid $border-color;
+    flex: 0 0 auto; // Don't grow or shrink
+    height: $app-height;
+    border-left: none; // Remove border since we have gap
   }
 }
 
@@ -57,7 +62,7 @@ $border-color: #D4D7D9;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  z-index: 2; // Keep header above content when scrolling
+  z-index: 2;
 }
 
 // Stats content
@@ -67,7 +72,7 @@ $border-color: #D4D7D9;
   grid-template-columns: repeat(3, 1fr);
   gap: 1rem;
   padding: 1.5rem;
-  overflow-y: auto; // Individual scroll for right content
+  overflow-y: auto;
 }
 
 // Stats card
@@ -105,7 +110,7 @@ $border-color: #D4D7D9;
 @media (max-width: 75rem) { // 1200px
   .app-container {
     .right-section {
-      width: 25rem;
+      width: 40rem;
     }
   }
 }
@@ -114,15 +119,18 @@ $border-color: #D4D7D9;
   .app-container {
     flex-direction: column;
     
-    .left-section, 
+    .left-section,
     .right-section {
       width: 100%;
-      height: 50vh; // Equal height
+      height: auto;
+    }
+    
+    .left-section {
+      max-height: calc($app-height * 0.6);
     }
     
     .right-section {
-      border-left: none;
-      border-top: 1px solid $border-color;
+      max-height: calc($app-height * 0.4);
     }
   }
 }
