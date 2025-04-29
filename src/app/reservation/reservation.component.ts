@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ReservationListComponent } from '../reservation-list/reservation-list.component';
 import { ReservationAccordion } from '../model';
@@ -16,4 +16,5 @@ import { RESERVATION_ACCORDION_LIST } from '../reservation-list.const';
 })
 export class ReservationComponent {
   reservationAccordionList: ReservationAccordion[] = RESERVATION_ACCORDION_LIST;
+   @Input() fixedWidth = '1015px';
 }

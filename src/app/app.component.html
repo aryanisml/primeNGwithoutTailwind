@@ -1,5 +1,5 @@
 <div class="app-container">
-    <section class="left-section">
+    <section class="left-section" [style.max-width]="fixedWidth" [style.transition]="'max-width 0.3s ease-in-out'">
       <div class="header">
         <div class="placeholder-item"></div>
         <div class="header-controls">
@@ -8,9 +8,9 @@
           <span></span>
         </div>
       </div>
-      <app-reservation></app-reservation>
+      <app-reservation [fixedWidth]="fixedWidth"></app-reservation>
     </section>
     <section class="right-section">
-      <app-reservation-dashboard></app-reservation-dashboard>
+      <app-reservation-dashboard (closeFired)="closeFired($event)"></app-reservation-dashboard>
     </section>
   </div>

@@ -7,9 +7,9 @@ section {
   }
   
   // Accordion wrapper - force exact width
-  app-reservation-accordion {
+  .accordion-wrapper {
     display: block;
-    width: 616px !important; // Force exact width with !important
-    min-width: 616px; // Add min-width
-    max-width: 616px; // Add max-width for consistency
+    // width: 1015px !important; // Force exact width with !important
+    // min-width: 1015px; // Add min-width
+    // max-width: 1015px; // Add max-width for consistency
   }

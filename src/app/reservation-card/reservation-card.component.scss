@@ -1,251 +1,254 @@
 /* reservation-card.component.scss */
 @use '../../styles/typography-utilities.scss' as typography;
 
-
 .reservation-card-container {
-    width: 100%;
-    margin-top: 8px;
-    max-width: 430px !important;
+  width: 100%;
+  margin-top: 8px;
+  // max-width: 854px !important;
+  cursor: pointer;
+}
+
+.reservation-card {
+  position: relative;
+  display: flex;
+  align-items: center; /* Keep this for horizontal alignment */
+  justify-content: space-between;
+  border: 1px solid #e8ecef;
+  border-radius: 6px;
+  overflow: hidden;
+  background-color: white;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+  transition: box-shadow 0.3s ease;
+  height: 60px; /* Card content height */
+  padding: 4px 0; /* 4px padding top and bottom to make total height 68px */
+  
+  &:hover {
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   }
   
-  .reservation-card {
-    position: relative;
-    display: flex;
-    align-items: center; /* Keep this for horizontal alignment */
-    justify-content: space-between;
-    border: 1px solid #e8ecef;
-    border-radius: 6px;
-    overflow: hidden;
+  &.bg-selected {
+    background-color: #EAF6FF;
+  }
+  
+  &.bg-white {
     background-color: white;
-    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
-    transition: box-shadow 0.3s ease;
-    height: 60px; /* Card content height */
-    padding: 4px 0; /* 4px padding top and bottom to make total height 68px */
-    
-    &:hover {
-      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    }
-    
-    &.bg-selected {
-      background-color: #EAF6FF;
-    }
-    
-    &.bg-white {
-      background-color: white;
-    }
+  }
+}
+
+/* Status indicator - left side color bar */
+.status-indicator {
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 16px;
+  
+  &.bg-green {
+    background-color: #108B4A;
   }
   
-  /* Status indicator - left side color bar */
-  .status-indicator {
+  &.bg-blue {
+    background-color: #0078d4;
+  }
+  
+  &.bg-orange {
+    background-color: #ff8c00;
+  }
+}
+
+/* Not assigned status - now with red background */
+.status-indicator-unassigned {
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 22.5px;
+  height: 100%;
+  background-color: #E53935; /* Red background color */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  
+  /* Warning icon styling */
+  .warning-icon {
     position: absolute;
-    left: 0;
-    top: 0;
-    bottom: 0;
-    width: 16px;
-    
-    &.bg-green {
-      background-color: #108B4A;
-    }
-    
-    &.bg-blue {
-      background-color: #0078d4;
-    }
-    
-    &.bg-orange {
-      background-color: #ff8c00;
-    }
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
   }
+}
+
+/* Main content wrapper */
+.content-wrapper {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  padding-left: 16px;
+  padding-right: 8px; /* Added padding-right for better spacing */
+  padding-top: 4px; /* 4px padding to match the vertical spacing */
+  padding-bottom: 4px; /* 4px padding to match the vertical spacing */
+  gap: 3px; /* Reduced gap for more compact spacing */
+  align-self: stretch;
+  justify-content: center; /* Added for vertical centering */
+}
+
+/* Header row with name and unit/tow info */
+.header-row {
+  display: inline-flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 4px; /* Reduced from 8px to 4px */
+  padding-left: 8px;
+  /* Removed margin-top to work with the new padding structure */
+}
+
+.name {
+  max-width: 144px;
+  color: #171718;
+  font-size: 16px;
+  font-weight: normal;
+  line-height: normal;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  @include typography.body-1-heavy();
+  word-break: break-word;
+}
+
+.detail-section {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 4px; /* Reduced from 8px to 4px */
+}
+
+.divider {
+  width: 1px;
+  height: 16px;
+  background-color: #E8ECEF;
+}
+
+.detail-group {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 4px;
+}
+
+.label {
+  color: #717274;
+  font-size: 14px;
+  line-height: 1.2;
+}
+
+.value {
+  color: #171718;
+  font-size: 14px;
+  line-height: 1.2;
+}
+
+/* Bottom row with details */
+.details-row {
+  display: inline-flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 4px; /* Reduced from 8px to 4px */
+  padding-left: 8px;
+  align-self: stretch;
+}
+
+.vehicle-group {
+  justify-content: flex-start;
+  align-items: center;
+  gap: 4px;
+  display: flex;
+}
+
+.vehicle-type, .trip-type, .customer-type {
+  color: #171718;
+  @include typography.body-2-book();
+}
+
+.plus-icon {
+  width: 15px;
+  height: 15px;
+  position: relative;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  cursor: pointer;
   
-  /* Not assigned status with stripes */
-  .status-indicator-unassigned {
+  svg {
     position: absolute;
-    left: 0;
-    top: 0;
-    bottom: 0;
-    width: 16px; /* 22px in rem */
-    height: 100%;
-    background-color: #F1F5F8;
-    overflow: hidden;
-    background-image: repeating-linear-gradient(
-      -38.84deg, /* Matching your original transform angle */
-      transparent,
-      transparent 0.1875rem,
-      #717274 0.1875rem,
-      #717274 0.25rem
-    );
+    left: 1.5px;
+    top: 2px;
   }
   
-  /* Main content wrapper */
-  .content-wrapper {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    padding-left: 16px;
-    padding-right: 8px; /* Added padding-right for better spacing */
-    padding-top: 4px; /* 4px padding to match the vertical spacing */
-    padding-bottom: 4px; /* 4px padding to match the vertical spacing */
-    gap: 3px; /* Reduced gap for more compact spacing */
-    align-self: stretch;
-    justify-content: center; /* Added for vertical centering */
+  &:hover {
+    background-color: rgba(0, 0, 0, 0.05);
+    border-radius: 50%;
   }
+}
+
+.shield-icon {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
   
-  /* Header row with name and unit/tow info */
-  .header-row {
-    display: inline-flex;
-    justify-content: flex-start;
-    align-items: center;
-    gap: 4px; /* Reduced from 8px to 4px */
-    padding-left: 8px;
-    /* Removed margin-top to work with the new padding structure */
-  }
-  
-  .name {
-    max-width: 144px;
-    color: #171718;
-    font-size: 16px;
-    font-weight: normal;
-    line-height: normal;
-    overflow: hidden;
-    text-overflow: ellipsis;
+  &:hover::after {
+    content: attr(title);
+    position: absolute;
+    bottom: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: rgba(0, 0, 0, 0.8);
+    color: white;
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-size: 12px;
     white-space: nowrap;
-    @include typography.body-1-heavy();
-    word-break: break-word;
+    z-index: 1000;
+    margin-bottom: 5px;
   }
+}
+
+.icon-container {
+  width: 20px;
+  height: 20px;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  display: inline-flex;
+  cursor: pointer;
+}
+
+/* Right side action button */
+.action-button {
+  padding: 6px;
+  margin-left: auto;
+  margin-right: 8px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50px;
+  align-self: center; /* Added for vertical centering */
+}
+
+.btn-add {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #717274;
+  font-size: 20px;
+  font-weight: 300;
+  border-radius: 9999px;
+  padding: 8px;
+  border: none;
+  background: transparent;
+  cursor: pointer;
   
-  .detail-section {
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
-    gap: 4px; /* Reduced from 8px to 4px */
+  &:hover {
+    background-color: rgba(0, 0, 0, 0.05);
   }
-  
-  .divider {
-    width: 1px;
-    height: 16px;
-    background-color: #E8ECEF;
-  }
-  
-  .detail-group {
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
-    gap: 4px;
-  }
-  
-  .label {
-    color: #717274;
-    font-size: 14px;
-    line-height: 1.2;
-  }
-  
-  .value {
-    color: #171718;
-    font-size: 14px;
-    line-height: 1.2;
-  }
-  
-  /* Bottom row with details */
-  .details-row {
-    display: inline-flex;
-    justify-content: flex-start;
-    align-items: center;
-    gap: 4px; /* Reduced from 8px to 4px */
-    padding-left: 8px;
-    align-self: stretch;
-  }
-  
-  .vehicle-group {
-    justify-content: flex-start;
-    align-items: center;
-    gap: 4px;
-    display: flex;
-  }
-  
-  .vehicle-type, .trip-type, .customer-type {
-    color: #171718;
-    @include typography.body-2-book();
-  }
-  
-  .plus-icon {
-    width: 15px;
-    height: 15px;
-    position: relative;
-    justify-content: center;
-    align-items: center;
-    display: flex;
-    cursor: pointer;
-    
-    svg {
-      position: absolute;
-      left: 1.5px;
-      top: 2px;
-    }
-    
-    &:hover {
-      background-color: rgba(0, 0, 0, 0.05);
-      border-radius: 50%;
-    }
-  }
-  
-  .shield-icon {
-    display: inline-flex;
-    justify-content: center;
-    align-items: center;
-    position: relative;
-    
-    &:hover::after {
-      content: attr(title);
-      position: absolute;
-      bottom: 100%;
-      left: 50%;
-      transform: translateX(-50%);
-      background-color: rgba(0, 0, 0, 0.8);
-      color: white;
-      padding: 4px 8px;
-      border-radius: 4px;
-      font-size: 12px;
-      white-space: nowrap;
-      z-index: 1000;
-      margin-bottom: 5px;
-    }
-  }
-  
-  .icon-container {
-    width: 20px;
-    height: 20px;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    display: inline-flex;
-    cursor: pointer;
-  }
-  
-  /* Right side action button */
-  .action-button {
-    padding: 6px;
-    margin-left: auto;
-    margin-right: 8px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border-radius: 50px;
-    align-self: center; /* Added for vertical centering */
-  }
-  
-  .btn-add {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: #717274;
-    font-size: 20px;
-    font-weight: 300;
-    border-radius: 9999px;
-    padding: 8px;
-    border: none;
-    background: transparent;
-    cursor: pointer;
-    
-    &:hover {
-      background-color: rgba(0, 0, 0, 0.05);
-    }
-  }
+}

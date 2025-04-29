@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 
 @Component({
   selector: 'app-reservation-dashboard',
@@ -8,6 +8,8 @@ import { Component } from '@angular/core';
   styleUrl: './reservation-dashboard.component.scss'
 })
 export class ReservationDashboardComponent {
+  @Output() closeFired = new EventEmitter<boolean>();
+  isFired = false;
   records = [
     {
       data: [
@@ -65,4 +67,8 @@ export class ReservationDashboardComponent {
       ]
     },
   ];
+    close(){
+this.isFired = !this.isFired;
+this.closeFired.emit(this.isFired);
+  }
 }

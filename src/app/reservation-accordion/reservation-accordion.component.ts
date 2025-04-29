@@ -1,4 +1,4 @@
-import { Component, Input, Output, EventEmitter } from '@angular/core';
+import { Component, Input, Output, EventEmitter, HostBinding, ElementRef } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ReservationCardComponent } from '../reservation-card/reservation-card.component';
 import { ReservationAccordion } from '../model';
@@ -25,6 +25,13 @@ export class ReservationAccordionComponent {
   isOpen: boolean = false;
   timeSlots: any = [];
   currentTime: Date = new Date();;
+  @Input() isFullWidth = true;
+    
+  @HostBinding('style.width') width = '100%';
+  @HostBinding('style.display') display = 'block';
+
+  constructor(private elementRef: ElementRef) {}
+  
 
   ngOnInit(): void {
     this.reservationAccordion.reservations.sort((a, b) => a.reservationTime.getTime() - b.reservationTime.getTime());
@@ -105,5 +112,24 @@ export class ReservationAccordionComponent {
 
   toggleAccordion(): void {
     this.isOpen = !this.isOpen;
+  }
+  ngAfterViewInit() {
+    // Ensure component takes full width of parent
+    this.adjustWidth();
+    
+    // Listen for window resize events
+    window.addEventListener('resize', this.adjustWidth.bind(this));
+  }
+
+  adjustWidth() {
+    // Get parent width and set component width to match
+    const parentWidth = this.elementRef.nativeElement.parentElement.offsetWidth;
+    this.width = `${parentWidth}px`;
+  }
+  
+   
+  ngOnDestroy() {
+    // Remove event listener on component destruction
+    window.removeEventListener('resize', this.adjustWidth.bind(this));
   }
 }

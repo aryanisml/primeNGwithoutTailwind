@@ -1,7 +1,7 @@
 <div class="stats-container">
     <div class="stats-header">
       <span class="stats-title">Today's Stats</span>
-      <button>close</button>
+      <button (click)="close()">close</button>
     </div>
     <div class="stats-content">
       <div *ngFor="let record of records" class="stats-card">

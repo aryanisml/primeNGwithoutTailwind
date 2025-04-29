@@ -17,8 +17,8 @@ export const RESERVATION_ACCORDION_LIST: ReservationAccordion[] = [
                 hasPhone: true,
                 hasFavorite: true,
                 hasWarning: false,
-                accentColor: 'green',
-                assigned: true,
+                accentColor: 'red',
+                assigned: false,
                 reservationTime: new Date('2025-04-23T09:30:00'),
             },
             {

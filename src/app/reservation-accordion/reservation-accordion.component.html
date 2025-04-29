@@ -9,7 +9,7 @@
     </div>
 </div>
 <div class="accordion-content"
-    [ngStyle]="{ 'max-height': !isOpen ? '2000px' : '0px' }">
+    [ngStyle]="{ 'max-height': isOpen ? '2000px' : '0px' }">
     <div class="content-wrapper">
         <div class="time-slot-container">
             <ng-container *ngFor="let slot of timeSlots; let i = index">
@@ -34,7 +34,8 @@
                                         [vehicleType]="reservation.vehicleType" [tripType]="reservation.tripType"
                                         [customerType]="reservation.customerType" [hasPhone]="reservation.hasPhone"
                                         [hasFavorite]="reservation.hasFavorite" [hasWarning]="reservation.hasWarning"
-                                        [accentColor]="reservation.accentColor" [assigned]="reservation.assigned">
+                                        [accentColor]="reservation.accentColor" [assigned]="reservation.assigned" 
+                                        [isFullWidth]="isFullWidth">
                                     </app-reservation-card>
                                 </div>
                             </ng-container>
@@ -51,7 +52,8 @@
                                         [vehicleType]="reservation.vehicleType" [tripType]="reservation.tripType"
                                         [customerType]="reservation.customerType" [hasPhone]="reservation.hasPhone"
                                         [hasFavorite]="reservation.hasFavorite" [hasWarning]="reservation.hasWarning"
-                                        [accentColor]="reservation.accentColor" [assigned]="reservation.assigned">
+                                        [accentColor]="reservation.accentColor" [assigned]="reservation.assigned"
+                                        [isFullWidth]="isFullWidth">
                                     </app-reservation-card>
                                 </div>
                             </ng-container>

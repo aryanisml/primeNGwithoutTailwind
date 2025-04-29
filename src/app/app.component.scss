@@ -1,6 +1,7 @@
 // Variables (assuming 16px base font size)
 $app-height: 52.375rem; // 838px / 16px = 52.375rem
-$right-width: 48.125rem; // 770px converted to rem
+//$right-width: 48.125rem; // 770px converted to rem
+$right-width:715px;
 $border-color: #D4D7D9;
 $gap-size: 1rem; // Gap between sections
 
@@ -11,6 +12,7 @@ $gap-size: 1rem; // Gap between sections
   width: 100%;
   height: $app-height;
   gap: $gap-size; // This sets the space between flex items
+  transition: all 0.3s ease-in-out;
   
   // Left section
   .left-section {
@@ -31,8 +33,8 @@ $gap-size: 1rem; // Gap between sections
     app-reservation {
       display: block;
       width: 100%;
-      max-width: 38.5rem;
-      padding-left: 1.25rem;
+      // max-width: 38.5rem;
+      // padding-left: 1.25rem;
       flex: 1;
       overflow-y: auto;
     }

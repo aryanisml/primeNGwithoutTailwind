@@ -36,4 +36,8 @@ export class AppComponent {
     //     this.widgets = data.widgets;
     //   });
   };
+  fixedWidth = '1015px';
+  closeFired(event :any){
+    this.fixedWidth= event ? '616px' :'1015px';
+  }
 }
