@@ -15,3 +15,7 @@
       </div>
     </div>
   </div>
+  <div *ngIf="reservationDetail() as detail">
+    <!-- Render detail here -->
+    {{ detail.name }}
+  </div>

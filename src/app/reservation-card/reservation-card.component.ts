@@ -1,7 +1,8 @@
 // reservation-card.component.ts
-import { Component, Input, Output, EventEmitter } from '@angular/core';
+import { Component, Input, Output, EventEmitter, inject, input } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Tooltip } from 'primeng/tooltip';
+import { ReservationStateService } from '../../services/reservation-state.service';
 
 @Component({
   selector: 'app-reservation-card',
@@ -11,6 +12,7 @@ import { Tooltip } from 'primeng/tooltip';
   styleUrls: ['./reservation-card.component.scss'],
 })
 export class ReservationCardComponent {
+  @Input() id : number=0;
   @Input() name: string = '';
   @Input() unitNumber: string = '';
   @Input() towNumber: string = '';
@@ -38,11 +40,16 @@ export class ReservationCardComponent {
   toggleSelection(): void {
     this.isSelected = !this.isSelected;
     this.cardSelected.emit();
+    this.selectReservation();
   }
   
   toggleUnitSelection(): void {
     // This won't trigger the parent's click handler now
     this.isFixedWidth =!this.isFixedWidth;
     this.unitSelected.emit();
+  }
+  private state = inject(ReservationStateService);
+  selectReservation() {
+    this.state.selectReservation(this.id);
   }
 }

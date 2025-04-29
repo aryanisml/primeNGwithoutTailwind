@@ -11,6 +11,7 @@ export interface Reservation {
   accentColor: 'green' | 'red' | 'blue' | 'gray';
   assigned: boolean;
   reservationTime: Date;
+  id ?: number;
 }
 
 export interface ReservationAccordion {

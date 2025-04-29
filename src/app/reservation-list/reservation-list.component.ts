@@ -1,7 +1,8 @@
-import { Component, Input, OnInit, SimpleChanges } from '@angular/core';
+import { Component, inject, Input, OnInit, SimpleChanges } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ReservationAccordionComponent } from '../reservation-accordion/reservation-accordion.component';
 import { ReservationAccordion } from '../model';
+import { ReservationStateService } from '../../services/reservation-state.service';
 
 
 @Component({
@@ -14,8 +15,11 @@ import { ReservationAccordion } from '../model';
   styleUrl: './reservation-list.component.scss'
 })
 export class ReservationListComponent implements OnInit {
-  @Input({ required: true }) reservationAccordionList: ReservationAccordion[] = [];
+  // @Input({ required: true }) reservationAccordionList: ReservationAccordion[] = [];
   @Input() fixedWidth: string = '';
+  private state = inject(ReservationStateService);
+  
+  reservations = this.state.reservations;
   
   isFullWidth = true;
   sectionWidth = '1015px';

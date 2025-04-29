@@ -1,5 +1,7 @@
 import { CommonModule } from '@angular/common';
-import { Component, EventEmitter, Output } from '@angular/core';
+import { Component, effect, EventEmitter, inject, Output, signal } from '@angular/core';
+import { ReservationListService } from '../../services/reservation-list.service';
+import { ReservationStateService } from '../../services/reservation-state.service';
 
 @Component({
   selector: 'app-reservation-dashboard',
@@ -70,5 +72,21 @@ export class ReservationDashboardComponent {
     close(){
 this.isFired = !this.isFired;
 this.closeFired.emit(this.isFired);
+  }
+
+  private listService = inject(ReservationListService);
+  private state = inject(ReservationStateService);
+
+  reservationDetail = signal<any | null>(null);
+  constructor() {
+    effect(() => {
+      const id = this.state.selectedReservationId();
+      if (id) {
+        this.listService.getReservationDetail(id).subscribe(detail => {
+          console.log(detail);
+          this.reservationDetail.set(detail);
+        });
+      }
+    });
   }
 }

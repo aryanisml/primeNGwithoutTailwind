@@ -1,6 +1,6 @@
 <section class="reservation-section"  >
   <div class="reservation-container">
-    <div *ngFor="let reservationAccordion of reservationAccordionList" class="accordion-wrapper" [style.max-width]="sectionWidth" [style.min-width]="sectionWidth" [style.width]="sectionWidth"  [style.transition]="'max-width 0.3s ease-in-out'">
+    <div *ngFor="let reservationAccordion of reservations()" class="accordion-wrapper" [style.max-width]="sectionWidth" [style.min-width]="sectionWidth" [style.width]="sectionWidth"  [style.transition]="'max-width 0.3s ease-in-out'">
       <app-reservation-accordion [reservationAccordion]="reservationAccordion" [isFullWidth]="isFullWidth"></app-reservation-accordion>
     </div>
   </div>
